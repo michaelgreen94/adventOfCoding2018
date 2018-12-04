@@ -1,6 +1,12 @@
 let snow = [];
 let gravity;
 
+let textures = [];
+
+function preload() {
+  textures = loadImage('/assets/img/flakes32.png')
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   gravity = createVector(0, 0.02);

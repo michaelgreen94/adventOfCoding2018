@@ -1,6 +1,10 @@
 function getRandomSize() {
-  let r = randomGaussian() * 2;
-  return constrain(abs(r * r), 2, 36);
+
+  let r = pow(random(0, 1), 5);
+  return constrain(r * 36, 2, 36);
+
+  // let r = randomGaussian() * 2;
+  // return constrain(abs(r * r), 2, 36);
 
   // while (true) {
   //   let r1 = random(1);
