@@ -1,8 +1,11 @@
 class Snowflake {
 
   constructor() {
+    let x = random(width);
+    let y = random(height);
+
     //snowflake position
-    this.pos = createVector(300, 200);
+    this.pos = createVector(x, y);
     //snowflake velocity
     this.vel = createVector();
     //snowflake acceleration
