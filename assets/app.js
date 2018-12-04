@@ -1,6 +1,10 @@
 let snow = [];
 let gravity;
 
+let wind;
+
+let zOff = 0;
+
 let spreadsheet;
 let textures = [];
 
@@ -20,7 +24,7 @@ function setup() {
     }
   }
 
-  for (let i = 0; i < 300; i++) {
+  for (let i = 0; i < 350; i++) {
     let x = random(width);
     let y = random(height);
     let design = random(textures)
@@ -36,8 +40,20 @@ function draw() {
   background(0)
   // snow.push(new Snowflake())
 
+  // let wx = map(mouseX, 0, width, -0.05, 0.05);
+  // let wind = createVector(wx, 0);
+
+  zOff += 0.01;
+
   for (flake of snow) {
+    let xOff = flake.pos.x / width;
+    let yOff = flake.pos.y / height;
+    let wAngle = noise(xOff, yOff, zOff) * TWO_PI;
+    let wind = p5.Vector.fromAngle(wAngle)
+    wind.mult(0.005)
+
     flake.applyForce(gravity)
+    flake.applyForce(wind)
     flake.update()
     flake.render()
   }

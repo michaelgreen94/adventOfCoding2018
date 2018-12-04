@@ -63,7 +63,7 @@ class Snowflake {
     this.xOff = sin(this.angle) * this.r;
     //adds velocity to the position
     this.vel.add(this.acc);
-    this.vel.limit(this.r * 0.15)
+    this.vel.limit(this.r * 0.125)
 
     if (this.vel.mag() < 1) {
       this.vel.normalize();
@@ -74,6 +74,15 @@ class Snowflake {
 
     if (this.pos.y > height + this.r) {
       this.randomize()
+    }
+
+    //wrapping left and right
+    if (this.pos.x < -this.r) {
+      this.pos.x = width + this.r;
+    }
+
+    if (this.pos.x > width + this.r) {
+      this.pos.x = -this.r;
     }
 
     //rotates snowflakes by the velocities magnitude
@@ -94,7 +103,9 @@ class Snowflake {
   }
 
   // offScreen() {
-  //   return (this.pos.y > height + this.r)
+  //   return (this.pos.y > height + this.r) ||
+  //     this.pos.x < -this.r ||
+  //     this.pos.x > width + this.r;
   // }
 
 
