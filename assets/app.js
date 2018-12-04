@@ -11,7 +11,7 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  gravity = createVector(0, 0.02);
+  gravity = createVector(0, 0.5);
   //consistantly only has 300 flakes
   for (let x = 0; x < spreadsheet.width; x += 32) {
     for (let y = 0; y < spreadsheet.height; y += 32) {
@@ -20,7 +20,7 @@ function setup() {
       textures.push(img)
     }
   }
-  for (let i = 0; i < 350; i++) {
+  for (let i = 0; i < 1000; i++) {
     let x = random(width);
     let y = random(height);
     let design = random(textures)
@@ -40,7 +40,7 @@ function draw() {
     let yOff = flake.pos.y / height;
     let wAngle = noise(xOff, yOff, zOff) * TWO_PI;
     let wind = p5.Vector.fromAngle(wAngle)
-    wind.mult(0.005)
+    wind.mult(0.05)
     flake.applyForce(gravity)
     flake.applyForce(wind)
     flake.update()
