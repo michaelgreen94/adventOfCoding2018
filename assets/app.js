@@ -3,7 +3,7 @@ let gravity;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  gravity = createVector(0, 0.03);
+  gravity = createVector(0, 0.02);
 }
 
 function draw() {
@@ -11,8 +11,15 @@ function draw() {
   snow.push(new Snowflake())
 
   for (flake of snow) {
+    flake.applyForce(gravity)
     flake.update()
     flake.render()
-    flake.applyForce(gravity)
   }
+
+  for (let i = snow.length - 1; i >= 0; i--) {
+    if (snow[i].offScreen()) {
+      snow.splice(i, 1)
+    }
+  }
+
 }
