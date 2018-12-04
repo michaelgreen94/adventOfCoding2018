@@ -9,6 +9,7 @@ function draw() {
   snow.push(new Snowflake())
 
   for (flake of snow) {
+    flake.update()
     flake.render()
   }
 }
