@@ -1,7 +1,9 @@
 let snow = [];
+let gravity;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  gravity = createVector(0, 0.03);
 }
 
 function draw() {
@@ -11,5 +13,6 @@ function draw() {
   for (flake of snow) {
     flake.update()
     flake.render()
+    flake.applyForce(gravity)
   }
 }
