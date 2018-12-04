@@ -62,12 +62,16 @@ class Snowflake {
     this.vel.add(this.acc);
     this.pos.add(this.vel)
     this.acc.mult(0);
+
+    if (this.pos.y > height + this.r) {
+      this.randomize()
+    }
   }
 
 
-  offScreen() {
-    return (this.pos.y > height + this.r)
-  }
+  // offScreen() {
+  //   return (this.pos.y > height + this.r)
+  // }
 
 
 
