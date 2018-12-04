@@ -29,6 +29,8 @@ class Snowflake {
     //snowflake acceleration
     this.acc = createVector();
     this.angle = random(TWO_PI)
+    this.dir = (random(1) > 0.5) ? 1 : -1;
+    this.xOff = 0;
     //snowflake size
     this.r = getRandomSize();
     //terminal velocity
@@ -57,9 +59,11 @@ class Snowflake {
 
 
   update() {
+
+    this.xOff = sin(this.angle) * this.r;
     //adds velocity to the position
     this.vel.add(this.acc);
-    this.vel.limit(this.r * 0.2)
+    this.vel.limit(this.r * 0.15)
 
     if (this.vel.mag() < 1) {
       this.vel.normalize();
@@ -71,6 +75,10 @@ class Snowflake {
     if (this.pos.y > height + this.r) {
       this.randomize()
     }
+
+    //rotates snowflakes by the velocities magnitude
+    this.angle += this.dir * this.vel.mag() / 200;
+
   }
 
   render() {
@@ -78,14 +86,11 @@ class Snowflake {
     // strokeWeight(this.r);
     // point(this.pos.x, this.pos.y)
     push();
-    translate(this.pos.x, this.pos.y);
+    translate(this.pos.x + this.xOff, this.pos.y);
     rotate(this.angle);
     imageMode(CENTER);
     image(this.img, 0, 0, this.r, this.r)
     pop();
-
-    //rotates snowflakes by the velocities magnitude
-    this.angle += this.vel.mag() / 150;
   }
 
   // offScreen() {
