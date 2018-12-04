@@ -60,7 +60,7 @@ class Snowflake {
 
   update() {
 
-    this.xOff = sin(this.angle) * this.r;
+    this.xOff = sin(this.angle) * 2 * this.r;
     //adds velocity to the position
     this.vel.add(this.acc);
     this.vel.limit(this.r * 0.125)
