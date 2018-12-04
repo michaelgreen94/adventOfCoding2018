@@ -16,10 +16,10 @@ function draw() {
     flake.render()
   }
 
-  for (let i = snow.length - 1; i >= 0; i--) {
-    if (snow[i].offScreen()) {
-      snow.splice(i, 1)
-    }
-  }
+  // for (let i = snow.length - 1; i >= 0; i--) {
+  //   if (snow[i].offScreen()) {
+  //     snow.splice(i, 1)
+  //   }
+  // }
 
 }
