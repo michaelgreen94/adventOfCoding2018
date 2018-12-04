@@ -103,14 +103,4 @@ class Snowflake {
   //     this.pos.x > width + this.r;
   // }
 
-
-
-
-
-
-
-
-
-
-
 }
