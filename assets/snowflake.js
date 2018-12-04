@@ -1,5 +1,4 @@
 function getRandomSize() {
-
   let r = pow(random(0, 1), 3);
   return constrain(r * 32, 8, 32);
 
@@ -28,8 +27,11 @@ class Snowflake {
     this.vel = createVector(0, 0);
     //snowflake acceleration
     this.acc = createVector();
+    //snowflake travel angle
     this.angle = random(TWO_PI)
+    //snowflake random direction
     this.dir = (random(1) > 0.5) ? 1 : -1;
+    //used to determine lat position for wraping
     this.xOff = 0;
     //snowflake size
     this.r = getRandomSize();
@@ -41,9 +43,6 @@ class Snowflake {
     //parallax effect hack
     let f = force.copy();
     f.mult(this.r)
-
-    // let f = force.copy();
-    // f.div(this.mass);
     this.acc.add(f);
   }
 
@@ -59,7 +58,7 @@ class Snowflake {
 
 
   update() {
-
+    //affects the oscilation of the flakes
     this.xOff = sin(this.angle) * 2 * this.r;
     //adds velocity to the position
     this.vel.add(this.acc);
@@ -80,7 +79,6 @@ class Snowflake {
     if (this.pos.x < -this.r) {
       this.pos.x = width + this.r;
     }
-
     if (this.pos.x > width + this.r) {
       this.pos.x = -this.r;
     }
@@ -91,9 +89,6 @@ class Snowflake {
   }
 
   render() {
-    // stroke(255);
-    // strokeWeight(this.r);
-    // point(this.pos.x, this.pos.y)
     push();
     translate(this.pos.x + this.xOff, this.pos.y);
     rotate(this.angle);
