@@ -1,10 +1,11 @@
 let snow = [];
 let gravity;
 
+let spreadsheet;
 let textures = [];
 
 function preload() {
-  textures = loadImage('/assets/img/flakes32.png')
+  spreadsheet = loadImage('/assets/img/flakes32.png')
 }
 
 function setup() {
@@ -16,6 +17,17 @@ function setup() {
     let y = random(height);
     snow.push(new Snowflake(x, y));
   }
+
+  for (let x = 0; x < spreadsheet.width; x += 32) {
+    for (let y = 0; y < spreadsheet.height; y += 32) {
+      let img = spreadsheet.get(x, y, 32, 32)
+      image(img, x, y)
+      textures.push(img)
+    }
+  }
+
+
+
 }
 
 function draw() {
