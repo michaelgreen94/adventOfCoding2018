@@ -2,25 +2,31 @@ let input = [+15, -7, +16, +5, +12, +16, -4, +10, -1, +14, -16, +6, +4, +11, -2,
 function addInput(input) {
   let sum = 0
   let freqArr = []
+  freqArr.sort((a, b) => a - b)
   let currFreq = 0
   for (let i = 0; i < input.length; i++) {
     let value = input[i]
     freqArr.push(currFreq)
-    freqArr.sort((a, b) => a - b)
     sum += value
     currFreq += value
-    if (freqArr.length) {
-      let found = freqArr.find(x => x == currFreq)
-      if (found != undefined) {
-        return found
-      }
-      console.log(freqArr)
-      // if (i = input.length + 1) {
-      //   console.log(freqArr.length)
-      //   i = 1
-      // }
+    if (i = input.length + 1) {
+      freqArr.sort((a, b) => a - b)
+      i = 1
     }
   }
   return sum
 }
 console.log(addInput(input))
+
+
+
+
+
+
+if (freqArr.length) {
+  let found = freqArr.find(x => x == currFreq)
+  if (found != undefined) {
+    return found
+  }
+
+}
