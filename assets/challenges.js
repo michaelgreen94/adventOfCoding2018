@@ -21,6 +21,7 @@ function addInput(input) {
     }
   }
   while (!found)
+  console.log(freqArr)
   return currfreq
 }
 console.log(addInput(input))
