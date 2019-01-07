@@ -7,12 +7,21 @@ function addInput(input) {
   let freqArr = []
   let found = false
   let currfreq = 0
+  let middle = 0
   do {
+    if (freqArr.length % 1000 == 0) {
+      freqArr.sort()
+      middle = freqArr.length / 2
+    }
     let freq = input[i]
     freqArr.push(currfreq)
     currfreq = currfreq + freq
-    let yep = freqArr.find(x => x == currfreq)
-    if (yep != undefined) {
+    if (currfreq >= freqArr[middle]) {
+
+    }
+    // let foundFreq = freqArr.find(x => x == currfreq)
+    let foundFreq = freqArr.find(function ())
+    if (foundFreq != undefined) {
       found = true
     }
     i++
@@ -21,7 +30,6 @@ function addInput(input) {
     }
   }
   while (!found)
-  console.log(freqArr)
   return currfreq
 }
 console.log(addInput(input))
