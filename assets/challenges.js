@@ -104,17 +104,17 @@ function sorting(input) {
   let i = 0
   let currfreq = 0
   let middle = 0
-  if (freqArr.length % 2 != 0) {
-    Math.round(middle)
-  } else {
-    middle = freqArr.length / 2
-  }
-  if (freqArr.length == 0) {
-    freqArr.push(currfreq)
-  }
+  debugger
   do {
+    if (freqArr.length % 2 != 0) {
+      Math.round(middle)
+    } else {
+      middle = freqArr.length / 2
+    }
+    if (freqArr.length == 0) {
+      freqArr.push(currfreq)
+    }
     let freq = input[i]
-    debugger
     switch (true) {
       case (freqArr.length == 0):
         freqArr.push(freq)
@@ -132,7 +132,7 @@ function sorting(input) {
         do {
           middle - 1
         }
-        while (freq >= freqArr[middle - 1])
+        while (freq >= freqArr[middle])
         freqArr.splice(middle, 0, freq)
         currfreq += freq
         break;
@@ -140,8 +140,8 @@ function sorting(input) {
         do {
           middle + 1
         }
-        while (freq <= freqArr[middle + 1])
-        freqArr.splice(middle, 0, freq)
+        while (freq <= freqArr[middle])
+        freqArr.splice(middle + 1, 0, freq)
         currfreq += freq
         break;
     }
