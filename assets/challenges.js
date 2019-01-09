@@ -132,15 +132,15 @@ function sorting(input) {
         do {
           middle - 1
         }
-        while (freq >= freqArr[middle])
-        freqArr.splice(middle, 0, freq)
+        while (freq >= freqArr[middle - 1])
+        freqArr.splice(middle - 1, 0, freq)
         currfreq += freq
         break;
       case (freq >= freqArr[middle]):
         do {
           middle + 1
         }
-        while (freq <= freqArr[middle])
+        while (freq <= freqArr[middle + 1])
         freqArr.splice(middle + 1, 0, freq)
         currfreq += freq
         break;
