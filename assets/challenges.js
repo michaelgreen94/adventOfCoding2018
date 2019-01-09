@@ -18,7 +18,20 @@ function addInput(input) {
       middle = freqArr.length / 2
     }
     let freq = input[i]
+    switch (true) {
+      case (currfreq <= freqArr[0]):
+        freqArr.unshift(currfreq)
+        break;
+      case (currfreq >= freqArr[freqArr.length - 1]):
+        freqArr.push(currfreq)
+        break;
+      case (currfreq <= freqArr[middle]):
 
+        break;
+      case (currfreq >= freqArr[middle]):
+
+        break;
+    }
 
 
     freqArr.push(currfreq)
