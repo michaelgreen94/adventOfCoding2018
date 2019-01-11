@@ -95,3 +95,4 @@
 // console.log(sorting(input))
 
 // advent challenge 2
+console.clear()
