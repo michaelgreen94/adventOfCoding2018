@@ -8,6 +8,7 @@ function sorting(input) {
   let middle = 0
   let ok = false
   let found = false
+  let foundFreq = undefined
   do {
     if (freqArr.length % 2 != 0) {
       middle = Math.round(freqArr.length / 2) - 1
@@ -21,10 +22,16 @@ function sorting(input) {
       freqArr.push(currfreq)
     }
     currfreq += freq
-    let foundFreq = freqArr.find(x => x == currfreq)
+    if (currfreq <= freqArr[middle]) {
+      let thisArr = freqArr.slice(0, middle)
+      foundFreq = thisArr.find(x => x == currfreq)
+    }
+    if (currfreq >= freqArr[middle]) {
+      let thisArr = freqArr.slice(middle, freqArr.length - 1)
+      foundFreq = thisArr.find(x => x == currfreq)
+    }
     if (foundFreq != undefined) {
       console.log(freqArr)
-      // debugger
       found = true
     }
     switch (true) {
@@ -66,6 +73,7 @@ function sorting(input) {
     i++
     ok = false
     if (i == input.length) {
+      debugger
       i = 0
     }
   }
