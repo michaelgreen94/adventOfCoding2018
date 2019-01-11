@@ -9,8 +9,13 @@ function sorting(input) {
   let ok = false
   let found = false
   let foundFreq = undefined
+  let quarter1 = 0
+  let quarter3 = 0
   do {
-    if (freqArr.length % 2 != 0) {
+    if (freqArr.length % 4 == 0) {
+      quarter1 = freqArr.length / 4
+      quarter3 = (freqArr.length - quarter1)
+    } else if (freqArr.length % 2 != 0) {
       middle = Math.round(freqArr.length / 2) - 1
     } else if (freqArr.length > 1) {
       middle = (freqArr.length / 2) - 1
@@ -23,12 +28,22 @@ function sorting(input) {
     }
     currfreq += freq
     if (currfreq <= freqArr[middle]) {
-      let thisArr = freqArr.slice(0, middle)
-      foundFreq = thisArr.find(x => x == currfreq)
+      if (currfreq <= freqArr[quarter1]) {
+        let thisArr = freqArr.slice(0, quarter1)
+        foundFreq = thisArr.find(x => x == currfreq)
+      } else {
+        let thisArr = freqArr.slice(0, middle)
+        foundFreq = thisArr.find(x => x == currfreq)
+      }
     }
     if (currfreq >= freqArr[middle]) {
-      let thisArr = freqArr.slice(middle, freqArr.length)
-      foundFreq = thisArr.find(x => x == currfreq)
+      if (currfreq >= freqArr[quarter3]) {
+        let thisArr = freqArr.slice(quarter3, freqArr.length)
+        foundFreq = thisArr.find(x => x == currfreq)
+      } else {
+        let thisArr = freqArr.slice(middle, quarter3)
+        foundFreq = thisArr.find(x => x == currfreq)
+      }
     }
     if (foundFreq != undefined) {
       found = true
