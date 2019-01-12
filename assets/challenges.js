@@ -18,6 +18,9 @@ function sorting(input) {
     if (freqArr.length % 4 == 0 && freqArr.length > 3) {
       endOfQuarter1 = (freqArr.length / 4) - 1
       endOfQuarter3 = (freqArr.length - endOfQuarter1) - 1
+    } else {
+      endOfQuarter1 = Math.round((freqArr.length / 4) - 1)
+      endOfQuarter3 = Math.round((freqArr.length - endOfQuarter1) - 1)
     }
     if (freqArr.length % 2 != 0) {
       middle = Math.round(freqArr.length / 2)
@@ -73,67 +76,80 @@ function sorting(input) {
       case (currfreq <= freqArr[middle - 1]):
         if (currfreq <= freqArr[endOfQuarter1]) {
           do {
-            if (currfreq == freqArr[endOfQuarter1]) {
-              found = true
-              return currfreq
-            } else {
-              endOfQuarter1 -= 1
-            }
+            endOfQuarter1 -= 1
             if (currfreq >= freqArr[endOfQuarter1 - 1]) {
               foundQ1 = true
             } else {
               endOfQuarter1 -= 0
             }
           } while (!foundQ1)
-          freqArr.splice(endOfQuarter1, 0, currfreq)
+          // 
+          // Double check this if below
+          // changed endofQuarter1 from -1 to just the value
+          // 
+          if (currfreq == freqArr[endOfQuarter1]) {
+            found = true
+            return currfreq
+          } else {
+            freqArr.splice(endOfQuarter1, 0, currfreq)
+          }
         } else if (currfreq <= freqArr[middle - 1] && currfreq >= freqArr[endOfQuarter1]) {
           do {
-            if (currfreq == freqArr[middle]) {
-              found = true
-              return currfreq
-            } else {
-              middle -= 1
-            }
+            middle -= 1
             if (currfreq >= freqArr[middle - 1]) {
               ok = true
             } else {
               middle -= 0
             }
           } while (!ok)
-          freqArr.splice(middle, 0, currfreq)
+          // 
+          // Also check this if beloww
+          // 
+          if (currfreq == freqArr[middle]) {
+            found = true
+            return currfreq
+          } else {
+            freqArr.splice(middle, 0, currfreq)
+          }
         }
         break;
       case (currfreq >= freqArr[middle - 1]):
         if (currfreq >= freqArr[endOfQuarter3]) {
           do {
-            if (currfreq == freqArr[endOfQuarter3]) {
-              found = true
-              return currfreq
-            } else {
-              endOfQuarter3 += 1
-            }
+            endOfQuarter3 += 1
             if (currfreq <= freqArr[endOfQuarter3]) {
               foundQ3 = true
             } else {
               endOfQuarter3 += 0
             }
           } while (!foundQ3)
-          freqArr.splice(endOfQuarter3, 0, currfreq)
+          // 
+          // And this if below
+          // 
+          if (currfreq == freqArr[endOfQuarter3]) {
+            found = true
+            return currfreq
+          } else {
+            freqArr.splice(endOfQuarter3, 0, currfreq)
+          }
         } else if (currfreq >= freqArr[middle] && currfreq <= freqArr[endOfQuarter3]) {
           do {
-            if (currfreq == freqArr[middle]) {
-              found = true
-              return currfreq
-            } else {
-              middle += 1
-            }
+            middle += 1
             if (currfreq <= freqArr[middle]) {
               ok = true
             } else {
               middle += 0
             }
           } while (!ok)
-          freqArr.splice(middle, 0, currfreq)
+          // 
+          // You guessed it! check this one too
+          // 
+          if (currfreq == freqArr[middle]) {
+            found = true
+            return currfreq
+          } else {
+            freqArr.splice(middle, 0, currfreq)
+          }
         }
         break;
     }
@@ -142,7 +158,7 @@ function sorting(input) {
     foundQ1 = false
     foundQ3 = false
     if (i == input.length) {
-      debugger
+      // debugger
       i = 0
     }
   }
