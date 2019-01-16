@@ -30,8 +30,8 @@ function findFreqency(arr) {
       i = 0
     }
   }
-  while (Error)
-  return Error
+  while (!false)
+  return ht.dataStore
 }
 console.log(findFreqency(input))
 
