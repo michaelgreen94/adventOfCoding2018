@@ -8,7 +8,7 @@ function hashTable() {
 
 hashTable.prototype.put = function (key, value) {
   if (this.dataStore.hasOwnProperty(key)) {
-    throw new Error("duplicate value" + key)
+    throw new Error("duplicate value " + key)
   }
   else {
     this.dataStore[key] = key
@@ -20,18 +20,15 @@ var ht = new hashTable()
 
 function findFreqency(arr) {
   let currfreq = 0
-  let i = 0
-  do {
-    let freq = arr[i]
-    ht.put(currfreq)
-    currfreq += freq
-    i += 1
+  for (let i = 0; i <= arr.length; i++) {
     if (i == arr.length) {
       i = 0
     }
+    let freq = arr[i]
+    ht.put(currfreq)
+    currfreq += freq
   }
-  while (!false)
-  return ht.dataStore
+  return currfreq
 }
 console.log(findFreqency(input))
 
