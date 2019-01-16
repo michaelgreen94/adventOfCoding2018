@@ -30,6 +30,6 @@ function findFreqency(arr) {
   }
   return currfreq
 }
-console.log(findFreqency(input))
+findFreqency(input)
 
 // advent challenge 2
