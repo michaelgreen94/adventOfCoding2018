@@ -70,47 +70,47 @@ let a2Input = ['naosmkcwtdbfivxuphzweraljq', 'nvssmicltdbfiyxuphzgeraljq', 'nvos
 // }
 // console.log(checkSum(a2Input))
 
-function checkId(arr) {
-  let found = false
-  let out = []
-  do {
-    for (let i = 1; i < arr.length; i++) {
-      let id = arr[i]
-      let posId = arr[0]
-      let counter = 0
-      for (let j = 0; j < id.length; j++) {
-        let ltr1 = id[j]
-        let ltr2 = posId[j]
-        if (ltr1 != ltr2) {
-          counter += 1
-        }
-        if (counter == 2) {
-          counter = 0
-          break
-        }
-        if (counter == 1 && j == id.length - 1) {
-          found = true
-          out.push(posId)
-          out.push(id)
-        }
-      }
-      if (i == arr.length - 1) {
-        arr.shift()
-        i = 1
-      }
-    }
-  } while (!found)
-  let newOut = []
-  let firstId = out[0]
-  let secondId = out[1]
-  for (let k = 0; k < secondId.length; k++) {
-    let letter = secondId[k]
-    let letter2 = firstId[k]
-    if (letter == letter2) {
-      newOut.push(letter)
-    } else { continue }
-  }
-  return newOut.join('')
-}
-console.log(checkId(a2Input))
+// function checkId(arr) {
+//   let found = false
+//   let out = []
+//   do {
+//     for (let i = 1; i < arr.length; i++) {
+//       let id = arr[i]
+//       let posId = arr[0]
+//       let counter = 0
+//       for (let j = 0; j < id.length; j++) {
+//         let ltr1 = id[j]
+//         let ltr2 = posId[j]
+//         if (ltr1 != ltr2) {
+//           counter += 1
+//         }
+//         if (counter == 2) {
+//           counter = 0
+//           break
+//         }
+//         if (counter == 1 && j == id.length - 1) {
+//           found = true
+//           out.push(posId)
+//           out.push(id)
+//         }
+//       }
+//       if (i == arr.length - 1) {
+//         arr.shift()
+//         i = 1
+//       }
+//     }
+//   } while (!found)
+//   let newOut = []
+//   let firstId = out[0]
+//   let secondId = out[1]
+//   for (let k = 0; k < secondId.length; k++) {
+//     let letter = secondId[k]
+//     let letter2 = firstId[k]
+//     if (letter == letter2) {
+//       newOut.push(letter)
+//     } else { continue }
+//   }
+//   return newOut.join('')
+// }
+// console.log(checkId(a2Input))
 
