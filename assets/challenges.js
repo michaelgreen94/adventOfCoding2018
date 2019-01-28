@@ -114,3 +114,18 @@ let a2Input = ['naosmkcwtdbfivxuphzweraljq', 'nvssmicltdbfiyxuphzgeraljq', 'nvos
 // }
 // console.log(checkId(a2Input))
 
+// function credit() {
+//   let x = 103
+//   let y = 108
+//   let z = 0
+//   let months = 0
+//   while (z < .99) {
+//     z = (x / y)
+//     x += 39
+//     y += 39
+//     months++
+//   }
+//   console.log(z)
+//   console.log(months)
+// }
+// credit()
