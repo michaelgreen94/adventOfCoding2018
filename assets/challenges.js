@@ -143,47 +143,36 @@ hashTable.prototype.put = function (key, value) {
     this.sqInch += 1
   }
   else {
-    this.dataStore[key] = key
+    this.dataStore[key] = value
     return this.dataStore
   }
 }
 
 var ht = new hashTable()
 
-// function findFreqency(arr) {
-//   let currfreq = 0
-//   for (let i = 0; i <= arr.length; i++) {
-//     if (i == arr.length) {
-//       i = 0
-//     }
-//     let freq = arr[i]
-//     ht.put(currfreq)
-//     currfreq += freq
-//   }
-//   return currfreq
-// }
-// findFreqency(input)
 function nesting(arr) {
-  let newArr = []
   for (let i = 0; i < arr.length; i++) {
-    debugger
     let instructions = arr[i]
     let coordArr = instructions.split(':', 2)
     let posArr = coordArr[0].split(',', 2)
     let sizeArr = coordArr[1].trim(' ').split('x', 2)
-    let x = posArr[0]
-    let y = posArr[1]
+    let x = Number(posArr[0])
+    let y = Number(posArr[1])
     let height = sizeArr[0]
     let width = sizeArr[1]
-    for (let j = 0; j < height; j++) {
-      x += 1
-      newArr[x][y].push('x')
-      for (let k = 0; k < width; k++) {
+    for (let j = 0; j <= width; j++) {
+      for (let k = 0; k <= height; k++) {
+        let hashCoord = x + ',' + y
+        ht.put(hashCoord, 'x')
         y += 1
-        newArr[x][y].push('x')
       }
+      x += 1
+      y = Number(posArr[1])
     }
-    return newArr
+    x = Number(posArr[0])
+    y = Number(posArr[1])
   }
+  console.log(ht.sqInch)
+  return ht.sqInch
 }
 nesting(a3Input)
