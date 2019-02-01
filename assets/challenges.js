@@ -135,17 +135,22 @@ let a3Input = ["257,829: 10x23", "902,685: 10x20", "107,733: 20x25", "186,421: 2
 
 function hashTable() {
   this.dataStore = {}
-  this.sqInch = 0
 }
 
 hashTable.prototype.put = function (key, value) {
   if (this.dataStore.hasOwnProperty(key)) {
-    this.sqInch += 1
-  }
-  else {
+    value += 1
+  } else {
     this.dataStore[key] = value
     return this.dataStore
   }
+}
+
+hashTable.prototype.enumerate = function () {
+  for (var el in this.dataStore) {
+    console.log(el + " " + this.dataStore[el])
+  }
+  return this.dataStore
 }
 
 var ht = new hashTable()
@@ -163,7 +168,7 @@ function nesting(arr) {
     for (let j = 0; j <= width; j++) {
       for (let k = 0; k <= height; k++) {
         let hashCoord = x + ',' + y
-        ht.put(hashCoord, 'x')
+        ht.put(hashCoord, 0)
         y += 1
       }
       x += 1
@@ -172,8 +177,7 @@ function nesting(arr) {
     x = Number(posArr[0])
     y = Number(posArr[1])
   }
-  console.log(ht.sqInch)
-  return ht.sqInch
+  return ht.enumerate()
 }
 nesting(a3Input)
 // test push from home reconfiguring environment
