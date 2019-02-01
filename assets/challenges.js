@@ -135,20 +135,18 @@ let a3Input = ["257,829: 10x23", "902,685: 10x20", "107,733: 20x25", "186,421: 2
 
 function hashTable() {
   this.dataStore = {}
+  this.sqInch = 0
 }
 
 hashTable.prototype.put = function (key, value) {
+  let cnt = this.dataStore[key]
   if (this.dataStore.hasOwnProperty(key)) {
-    value += 1
+    this.dataStore[key] = cnt += 1
+    if (cnt == 1) {
+      this.sqInch += 1
+    }
   } else {
     this.dataStore[key] = value
-    return this.dataStore
-  }
-}
-
-hashTable.prototype.enumerate = function () {
-  for (var el in this.dataStore) {
-    console.log(el + " " + this.dataStore[el])
   }
   return this.dataStore
 }
@@ -163,21 +161,20 @@ function nesting(arr) {
     let sizeArr = coordArr[1].trim(' ').split('x', 2)
     let x = Number(posArr[0])
     let y = Number(posArr[1])
-    let height = sizeArr[0]
-    let width = sizeArr[1]
+    let height = sizeArr[1]
+    let width = sizeArr[0]
     for (let j = 0; j <= width; j++) {
       for (let k = 0; k <= height; k++) {
         let hashCoord = x + ',' + y
         ht.put(hashCoord, 0)
-        y += 1
+        x += 1
       }
-      x += 1
-      y = Number(posArr[1])
+      // debugger
+      x = Number(posArr[0])
+      y += 1
     }
-    x = Number(posArr[0])
-    y = Number(posArr[1])
   }
-  return ht.enumerate()
+  console.log(ht.sqInch)
 }
 nesting(a3Input)
 // test push from home reconfiguring environment
