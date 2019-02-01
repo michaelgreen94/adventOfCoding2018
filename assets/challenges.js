@@ -163,9 +163,9 @@ function nesting(arr) {
     let y = Number(posArr[1])
     let height = sizeArr[1]
     let width = sizeArr[0]
-    for (let j = 0; j <= width; j++) {
-      for (let k = 0; k <= height; k++) {
-        let hashCoord = x + ',' + y
+    for (let j = 0; j < height; j++) {
+      for (let k = 0; k < width; k++) {
+        let hashCoord = y + ',' + x
         ht.put(hashCoord, 0)
         x += 1
       }
