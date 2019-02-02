@@ -152,10 +152,11 @@ hashTable.prototype.put = function (key, value) {
 }
 
 hashTable.prototype.notUsed = function (arr) {
-  for (let i = 1; i <= arr.length; i++) {
-    debugger
+  let id = 1
+  let used = 0
+  let i = 0
+  do {
     let instructions = arr[i]
-    let id = i
     let coordArr = instructions.split(':', 2)
     let posArr = coordArr[0].split(',', 2)
     let sizeArr = coordArr[1].trim(' ').split('x', 2)
@@ -163,7 +164,27 @@ hashTable.prototype.notUsed = function (arr) {
     let y = Number(posArr[1])
     let height = sizeArr[1]
     let width = sizeArr[0]
+    let hashCoord = y + ',' + x
+    for (let j = 0; j < height; j++) {
+      if (this.dataStore[hashCoord] == 1) {
+        continue
+      }
+      for (let k = 0; k < width; k++) {
+        hashCoord = y + ',' + x
+        if (this.dataStore[hashCoord] == 1) {
+          debugger
+          continue
+        }
+        x += 1
+      }
+      x = Number(posArr[0])
+      y += 1
+    }
+    i += 1
+    id += 1
   }
+  while (!used)
+  return id
 }
 
 var ht = new hashTable()
@@ -177,7 +198,6 @@ function nesting(arr) {
     let x = Number(posArr[0])
     let y = Number(posArr[1])
     let height = sizeArr[1]
-    debugger
     let width = sizeArr[0]
     for (let j = 0; j < height; j++) {
       for (let k = 0; k < width; k++) {
@@ -190,8 +210,8 @@ function nesting(arr) {
     }
   }
   console.log(ht.sqInch)
-  // let p2 = ht.notUsed(arr)
-  // return p2
+  let p2 = ht.notUsed(arr)
+  return p2
 }
 nesting(a3Input)
 // test push from home reconfiguring environment
