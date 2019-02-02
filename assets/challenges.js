@@ -164,22 +164,9 @@ hashTable.prototype.notUsed = function (arr) {
     let y = Number(posArr[1])
     let height = sizeArr[1]
     let width = sizeArr[0]
-    let hashCoord = y + ',' + x
-    for (let j = 0; j < height; j++) {
-      if (this.dataStore[hashCoord] == 1) {
-        continue
-      }
-      for (let k = 0; k < width; k++) {
-        hashCoord = y + ',' + x
-        if (this.dataStore[hashCoord] == 1) {
-          debugger
-          continue
-        }
-        x += 1
-      }
-      x = Number(posArr[0])
-      y += 1
-    }
+    let exit = 0
+    debugger
+    for (let j = 0; j < height);
     i += 1
     id += 1
   }
