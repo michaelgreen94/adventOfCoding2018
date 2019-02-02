@@ -151,48 +151,6 @@ hashTable.prototype.put = function (key, value) {
   return this.dataStore
 }
 
-hashTable.prototype.notUsed = function (arr) {
-  let id = 1
-  let used = 0
-  let i = 0
-  do {
-    let instructions = arr[i]
-    let coordArr = instructions.split(':', 2)
-    let posArr = coordArr[0].split(',', 2)
-    let sizeArr = coordArr[1].trim(' ').split('x', 2)
-    let x = Number(posArr[0])
-    let y = Number(posArr[1])
-    let height = sizeArr[1]
-    let width = sizeArr[0]
-    let hashCoord = y + ',' + x
-    let exit = 0
-    do {
-      for (let j = 0; j < height; j++) {
-        for (let k = 0; k < width; k++) {
-          hashCoord = y + ',' + x
-          if (this.dataStore[hashCoord] == 1) {
-            debugger
-            exit = 1
-            break
-          }
-          x += 1
-        }
-        x = Number(posArr[0])
-        y += 1
-      }
-    }
-    while (!exit)
-    if (!exit) {
-      used = 1
-    }
-    exit = 0
-    i += 1
-    id += 1
-  }
-  while (!used)
-  return id
-}
-
 var ht = new hashTable()
 
 function nesting(arr) {
@@ -216,8 +174,6 @@ function nesting(arr) {
     }
   }
   console.log(ht.sqInch)
-  let p2 = ht.notUsed(arr)
-  return p2
 }
 nesting(a3Input)
 // test push from home reconfiguring environment
