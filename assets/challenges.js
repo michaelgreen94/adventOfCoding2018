@@ -223,10 +223,10 @@
 // nesting(a3Input)
 // // test push from home reconfiguring environment
 
-// function findDiameter(num) {
-//   let area = num
-//   let rSqred = area / Math.PI
-//   let r = Math.sqrt(rSqred)
-//   return Math.round(r * 2)
-// }
-// console.log(findDiameter(562))
+function findDiameter(num) {
+  let area = num
+  let rSqred = area / Math.PI
+  let r = Math.sqrt(rSqred)
+  return Math.round(r * 2)
+}
+console.log(findDiameter(562))
