@@ -138,15 +138,16 @@ function hashTable() {
   this.sqInch = 0
 }
 
-hashTable.prototype.put = function (key, value) {
+hashTable.prototype.put = function (key, value, id) {
   let cnt = this.dataStore[key]
+  let thisId = id
   if (this.dataStore.hasOwnProperty(key)) {
     this.dataStore[key] = cnt += 1
     if (cnt == 1) {
       this.sqInch += 1
     }
   } else {
-    this.dataStore[key] = value
+    this.dataStore.thisId[key] = value
   }
   return this.dataStore
 }
@@ -163,10 +164,12 @@ function nesting(arr) {
     let y = Number(posArr[1])
     let height = sizeArr[1]
     let width = sizeArr[0]
+    let id = i + 1
     for (let j = 0; j < height; j++) {
       for (let k = 0; k < width; k++) {
         let hashCoord = y + ',' + x
-        ht.put(hashCoord, 0)
+        debugger
+        ht.put(hashCoord, 0, id)
         x += 1
       }
       x = Number(posArr[0])
