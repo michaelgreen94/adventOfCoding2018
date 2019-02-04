@@ -228,3 +228,5 @@
 // console.log(findDiameter(562))
 
 // advent challenge 4
+
+// let a4Input =
